@@ -19,9 +19,9 @@ public class SelectMode extends ModeSelector{
 	@Override  
     public void mouseClicked(MouseEvent e) {  
         // TODO Auto-generated method stub  
-        System.out.println("SelectMode clicked");
+//        System.out.println("SelectMode clicked");
         if(selectedobj != null) {
-        	System.out.println("SelectMode has obj");
+        	System.out.println("Selected object: "+selectedobj.getObjType());
         	selectedobj.setSelectedCondition(true);
 //        	if(selectedobj.getObjType() == "COMPOSITEOBJ") {
 //        		super.selectedcompositeobj = (CompositeObject) selectedobj;
@@ -32,7 +32,7 @@ public class SelectMode extends ModeSelector{
     @Override  
     public void mousePressed(MouseEvent e) {  
         // TODO Auto-generated method stub
-        System.out.println("SelectMode pressed");
+//        System.out.println("SelectMode pressed");
         selectedobj = ObjectController.isInBasicobjRange(e.getPoint());
         startrec = e.getPoint();
 //        ObjectController.unMove();
@@ -50,7 +50,7 @@ public class SelectMode extends ModeSelector{
     @Override  
     public void mouseReleased(MouseEvent e) {  
         // TODO Auto-generated method stub  
-        System.out.println("SelectMode released");
+//        System.out.println("SelectMode released");
         if(isdrag) {
         	endrec = e.getPoint();
         	if(!ismoveobj) {
@@ -58,8 +58,9 @@ public class SelectMode extends ModeSelector{
         		super.canvas.repaint();        		
         	}
         	else {
-        		selectedobj.setRange(endrec.x-startrec.x,endrec.y-startrec.y);
+        		selectedobj.setBasicPbjMoveOffset(endrec.x-startrec.x,endrec.y-startrec.y);
         		selectedobj.resetObjPosition();
+        		ObjectController.resetLine();
         		super.canvas.repaint(); 
         	}
         }
@@ -68,7 +69,7 @@ public class SelectMode extends ModeSelector{
     
     @Override
     public void mouseDragged(MouseEvent e) {
-    	System.out.println("SelectMode mouseDragged");   
+//    	System.out.println("SelectMode mouseDragged");   
     	isdrag = true;
     }
 

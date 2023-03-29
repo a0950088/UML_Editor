@@ -32,16 +32,19 @@ public class LineObjectMode extends ModeSelector{
 	@Override  
     public void mouseClicked(MouseEvent e) {  
         // TODO Auto-generated method stub  
-        System.out.println("LineObjectMode clicked");
+//        System.out.println("LineObjectMode clicked");
         
 //        super.canvas.repaint();
     }  
     @Override  
     public void mousePressed(MouseEvent e) {
     	int i=0;
-    	System.out.println("LineObjectMode pressed");
+//    	System.out.println("LineObjectMode pressed");
         startobj = ObjectController.isInBasicobjRange(e.getPoint()); 
-        if(startobj != null) {
+        if(startobj.getObjType()=="COMPOSITEOBJ") {
+        	startobj = null;
+        }
+        if(startobj!=null) {
         	startport = startobj.checkPort(e.getPoint());
     	}
     }
@@ -49,10 +52,14 @@ public class LineObjectMode extends ModeSelector{
     @Override  
     public void mouseReleased(MouseEvent e) {  
         // TODO Auto-generated method stub  
-        System.out.println("LineObjectMode released");  
+//        System.out.println("LineObjectMode released");  
         endobj = ObjectController.isInBasicobjRange(e.getPoint());
+        if(endobj.getObjType()=="COMPOSITEOBJ") {
+        	endobj = null;
+        }
         if(startobj!=null && endobj!=null && endobj!=startobj) {
         	endport = endobj.checkPort(e.getPoint());
+        	System.out.println("Create Line"); 
         	if(super.getObjectType() == "ASSOCIATION") {
             	super.generativeobj = new AssociationLineObject(startport,endport,startobj,endobj);
             }
@@ -62,15 +69,15 @@ public class LineObjectMode extends ModeSelector{
             else if(super.getObjectType() == "COMPOSITION") {    	
             	super.generativeobj = new CompositionLineObject(startport,endport,startobj,endobj);
             }
-            System.out.println("--------------------------------"); 
+//            System.out.println("--------------------------------"); 
             super.setObjectList();
             super.canvas.repaint();
         }
     }  
     @Override
     public void mouseDragged(MouseEvent e) {
-    	System.out.println("LineObjectMode mouseDragged");  
-    	System.out.println(e.getX() + "，" + e.getY());  
+//    	System.out.println("LineObjectMode mouseDragged");  
+//    	System.out.println(e.getX() + "，" + e.getY());  
     	
     }
   

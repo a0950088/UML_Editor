@@ -18,7 +18,7 @@ public class CompositeObject extends BasicObject{
 		super.range = setGroupRange();
 		super.width = super.range.width;
 	    super.height = super.range.height;
-	    objname = "Composite";
+//	    objname = "Composite";
 //	    setPorts();
 	}
 	
@@ -31,33 +31,38 @@ public class CompositeObject extends BasicObject{
 		int xmin = Integer.MAX_VALUE,ymin = Integer.MAX_VALUE;
 		int xmax = Integer.MIN_VALUE,ymax = Integer.MIN_VALUE;
 		for(BasicObject o:groupobjsarr) {
-			System.out.println(o.range);
+//			System.out.println(o.range);
 			xmin = Math.min(xmin, o.range.x);
 			ymin = Math.min(ymin, o.range.y);
 			xmax = Math.max(xmax, o.range.x+o.range.width);
 			ymax = Math.max(ymax, o.range.y+o.range.height);
 		}
-		System.out.println(xmin+" "+ymin+" "+xmax+" "+ymax);
+//		System.out.println(xmin+" "+ymin+" "+xmax+" "+ymax);
 		return new Rectangle(xmin,ymin,Math.abs(xmax-xmin),Math.abs(ymax-ymin));
 	}
 	
 	@Override
 	public void drawObject(Graphics g) {
-		g.setColor(Color.white);
-	    g.drawRect(range.x, range.y, width, height);//changed
+		for(BasicObject o:this.groupobjsarr) {
+			o.drawObject(g);
+		}
+		if(super.getSelectedCondition()) {
+			g.setColor(Color.black);
+		}
+		else {
+			g.setColor(Color.white);
+		}
+	    g.drawRect(range.x-2, range.y-2, width+4, height+4);//changed
 	    g.setColor(Color.black);
-	    for(BasicObject o:this.groupobjsarr) {
-	    	o.drawObject(g);
-	    }
-	    g.drawString(objname, range.x+width-20, range.y+10);
+//	    g.drawString(objname, range.x+width-20, range.y+10);
 	}
 	
 	@Override
-	public void setRange(int x,int y) {
+	public void setBasicPbjMoveOffset(int x,int y) {
 		super.moveXoffset = x;
 		super.moveYoffset = y;
 		for(BasicObject o:groupobjsarr) {
-			o.setRange(moveXoffset, moveYoffset);
+			o.setBasicPbjMoveOffset(moveXoffset, moveYoffset);
 			o.resetObjPosition();
 		}
 	}

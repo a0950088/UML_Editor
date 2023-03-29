@@ -21,7 +21,7 @@ public class UseCaseObject extends BasicObject{
 	}
 	@Override
 	public void drawObject(Graphics g) {
-		System.out.println("UseCaseObject paint");
+//		System.out.println("UseCaseObject paint");
 		if(super.getSelectedCondition()) {
 			super.drawObject(g);			
 		}

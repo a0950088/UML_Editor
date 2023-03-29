@@ -41,11 +41,12 @@ public class Gui {
 		change_objname.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(mode.getObjectType() == "SELECT") {
-					System.out.println("change object name!");
+					System.out.println("Change Object Name");
 					String newObjName = JOptionPane.showInputDialog(frame, "Change Object Name:");
 					if(newObjName != null) {
 						mode.getSelectedObj().changeObjName(newObjName);						
 					}
+					canvas.repaint();
 				}
 			}
 		});
@@ -53,7 +54,7 @@ public class Gui {
 		group.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(mode.getObjectType() == "SELECT") {
-					System.out.println("group!");
+					System.out.println("Group Object");
 					ObjectController.Group();
 				}
 	
@@ -63,7 +64,7 @@ public class Gui {
 		ungroup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(mode.getObjectType() == "SELECT") {
-					System.out.println("ungroup!");
+					System.out.println("Ungroup Object");
 					ObjectController.UnGroup(mode.getSelectedObj());					
 				}
 			}
@@ -85,7 +86,7 @@ public class Gui {
 			b.addActionListener(new ActionListener() {
 				@Override
 		        public void actionPerformed(ActionEvent e) {
-					System.out.println("ActionEvent!");
+//					System.out.println("ActionEvent!");
 					previousButton.setBackground(Color.white);
 					previousButton.setSelected(false);
 					

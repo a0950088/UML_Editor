@@ -23,14 +23,15 @@ public class BasicObjectMode extends ModeSelector{
         // Generate BasicObject
 		// 
 		
-        System.out.println("BasicObjectMode clicked");
+//        System.out.println("BasicObjectMode clicked");
+		System.out.println("Create Basic Object");
         if(super.getObjectType() == "CLASS") {
         	super.generativeobj = new ClassObject(e.getPoint());
         }
         else if(super.getObjectType() == "USECASE") {   	
         	super.generativeobj = new UseCaseObject(e.getPoint());
         }
-    	System.out.println("--------------------------------");
+//    	System.out.println("--------------------------------");
         super.setObjectList();
         super.canvas.repaint();
         
@@ -39,13 +40,13 @@ public class BasicObjectMode extends ModeSelector{
     @Override  
     public void mousePressed(MouseEvent e) {  
         // TODO Auto-generated method stub  
-        System.out.println("BasicObjectMode pressed");  
+//        System.out.println("BasicObjectMode pressed");  
     }  
   
     @Override  
     public void mouseReleased(MouseEvent e) {  
         // TODO Auto-generated method stub  
-        System.out.println("BasicObjectMode released");  
+//        System.out.println("BasicObjectMode released");  
     }  
   
 //    @Override  

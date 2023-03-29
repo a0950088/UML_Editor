@@ -20,15 +20,15 @@ public class MyCanvas extends Canvas{
 	 }    
   
 	public void setModeSelector(ModeSelector m) {
-		System.out.println("add setModeSelector!");
-		m.testprint();
+//		System.out.println("add setModeSelector!");
+//		m.testprint();
 		mode = m;
 	}
 	
 	@Override
 	public void paint(Graphics g)
 	{    
-		System.out.println("paint!");
+//		System.out.println("paint!");
 		super.paint(g);
 		mode.drawObject(g);
 	}

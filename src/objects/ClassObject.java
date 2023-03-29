@@ -29,8 +29,7 @@ public class ClassObject extends BasicObject{
 	}
 	@Override
 	public void drawObject(Graphics g) {
-		System.out.println("Class paint");
-		System.out.println(super.getSelectedCondition());
+//		System.out.println("Class paint");
 		if(super.getSelectedCondition()) {
 			super.drawObject(g);
 		}

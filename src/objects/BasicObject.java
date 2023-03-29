@@ -28,7 +28,7 @@ public class BasicObject extends Objects{
 	
 	@Override
 	public void drawObject(Graphics g) {
-		System.out.println("BasicClass paint");
+//		System.out.println("BasicClass paint");
 	    g.setColor(Color.black);
 	    g.fillRect(range.x+(width/2)-3, range.y-6, 6, 6);
 	    g.fillRect(range.x-6, range.y+(height/2)-3, 6, 6);
@@ -70,7 +70,7 @@ public class BasicObject extends Objects{
 		return this.range;
 	}
 	
-	public void setRange(int x,int y) {
+	public void setBasicPbjMoveOffset(int x,int y) {
 		this.moveXoffset = x;
 		this.moveYoffset = y;
 	}

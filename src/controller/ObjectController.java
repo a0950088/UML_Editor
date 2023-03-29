@@ -34,18 +34,18 @@ public class ObjectController {
 		obj.setDepth(depth);
 		depth++;
 		objlist.add(obj);
-		System.out.println("Controller----");
+		System.out.println("----Objects List----");
 		for(Objects o:objlist) {
 			o.testprint();
 		}
-		System.out.println("Controller----");
+		System.out.println("--------------------");
 	}
 	
 	public static void isMultiObjInSelectRec(Point p1,Point p2) {
 		Rectangle selectedrec = new Rectangle(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y), Math.abs(p1.x - p2.x), Math.abs(p1.y - p2.y));
 		for(BasicObject o:basicobjlist) {
 			if(selectedrec.contains(o.getRange())) {
-				System.out.println("In multi basicobj");
+//				System.out.println("In multi basicobj");
 				o.setSelectedCondition(true);
 				groupobjs.add(o);
 			}
@@ -57,7 +57,7 @@ public class ObjectController {
 		for(BasicObject o:basicobjlist) {
 			o.setSelectedCondition(false);
 			if(o.getRange().contains(point)) {
-				System.out.println("In basicobj");
+//				System.out.println("In basicobj");
 				lastobj = o;
 			}
 		}
@@ -74,10 +74,10 @@ public class ObjectController {
 			System.out.println("Can't Group!");
 		}
 		else {
-			System.out.println("Group!");
+//			System.out.println("Group!");
 			CompositeObject compositeobj = new CompositeObject(groupobjs);
 			for(BasicObject o:groupobjs) {
-				o.testprint();
+//				o.testprint();
 				objlist.remove(o);
 				basicobjlist.remove(o);
 			}
@@ -87,7 +87,7 @@ public class ObjectController {
 	}
 	
 	public static void UnGroup(BasicObject obj) {
-		System.out.println("UNGROUP");
+//		System.out.println("UNGROUP");
 		CompositeObject compositeobj = (CompositeObject) obj;
 		objlist.addAll(compositeobj.getGroupObjList());
 		Collections.sort(objlist, new Comparator<Objects>() {
@@ -106,13 +106,13 @@ public class ObjectController {
 		objlist.remove(compositeobj);
 		basicobjlist.remove(compositeobj);
 		compositeobj = null;
-		for(Objects o:objlist) {
-			o.testprint();
-		}
-		System.out.println("-------------------");
-		for(BasicObject o:basicobjlist) {
-			o.testprint();
-		}
+//		for(Objects o:objlist) {
+//			o.testprint();
+//		}
+//		System.out.println("-------------------");
+//		for(BasicObject o:basicobjlist) {
+//			o.testprint();
+//		}
 	}
 	
 	public static ArrayList<LineObject> getLine(){
@@ -126,7 +126,7 @@ public class ObjectController {
 	}
 	public static void unMove() {
 		for(BasicObject o:basicobjlist) {
-			o.setRange(0, 0);
+			o.setBasicPbjMoveOffset(0, 0);
 		}
 	}
 	
