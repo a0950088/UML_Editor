@@ -58,7 +58,7 @@ public class SelectMode extends ModeSelector{
         		super.canvas.repaint();        		
         	}
         	else {
-        		selectedobj.setBasicPbjMoveOffset(endrec.x-startrec.x,endrec.y-startrec.y);
+        		selectedobj.setBasicObjMoveOffset(endrec.x-startrec.x,endrec.y-startrec.y);
         		selectedobj.resetObjPosition();
         		ObjectController.resetLine();
         		super.canvas.repaint(); 

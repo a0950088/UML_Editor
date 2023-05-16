@@ -50,6 +50,12 @@ public class ObjectController {
 				groupobjs.add(o);
 			}
 		}
+		if(groupobjs.size() == 1) {
+			for(BasicObject o:basicobjlist) {
+				o.setSelectedCondition(false);
+			}
+			groupobjs.clear();
+		}
 	}
 	
 	public static BasicObject isInBasicobjRange(Point point) {		
@@ -126,7 +132,7 @@ public class ObjectController {
 	}
 	public static void unMove() {
 		for(BasicObject o:basicobjlist) {
-			o.setBasicPbjMoveOffset(0, 0);
+			o.setBasicObjMoveOffset(0, 0);
 		}
 	}
 	

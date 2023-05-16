@@ -70,7 +70,7 @@ public class BasicObject extends Objects{
 		return this.range;
 	}
 	
-	public void setBasicPbjMoveOffset(int x,int y) {
+	public void setBasicObjMoveOffset(int x,int y) {
 		this.moveXoffset = x;
 		this.moveYoffset = y;
 	}

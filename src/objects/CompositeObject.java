@@ -58,11 +58,11 @@ public class CompositeObject extends BasicObject{
 	}
 	
 	@Override
-	public void setBasicPbjMoveOffset(int x,int y) {
+	public void setBasicObjMoveOffset(int x,int y) {
 		super.moveXoffset = x;
 		super.moveYoffset = y;
 		for(BasicObject o:groupobjsarr) {
-			o.setBasicPbjMoveOffset(moveXoffset, moveYoffset);
+			o.setBasicObjMoveOffset(moveXoffset, moveYoffset);
 			o.resetObjPosition();
 		}
 	}
