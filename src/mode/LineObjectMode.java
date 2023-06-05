@@ -38,7 +38,6 @@ public class LineObjectMode extends ModeSelector{
     }  
     @Override  
     public void mousePressed(MouseEvent e) {
-    	int i=0;
 //    	System.out.println("LineObjectMode pressed");
         startobj = ObjectController.isInBasicobjRange(e.getPoint()); 
         if(startobj.getObjType()=="COMPOSITEOBJ") {
