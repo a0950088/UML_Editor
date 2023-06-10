@@ -19,19 +19,11 @@ public class CompositionLineObject extends LineObject{
 	
 	@Override
 	public void drawObject(Graphics g) {
-//		super.drawObject(g);
 		int x1 = startport.x;
 	    int y1 = startport.y;
 	    int x2 = endport.x;
 	    int y2 = endport.y;
-//	    if(endPort != null) {
-//	      x2 = endPort.getCentralPoint().x;
-//	      y2 = endPort.getCentralPoint().y;
-//	    }
-//	    else {
-//	      x2 = endPoint.x;
-//	      y2 = endPoint.y;
-//	    }
+
 	    int width = 10;
 	    int height = 5;
 	    int distanceX = x2 - x1, distanceY = y2 - y1;
