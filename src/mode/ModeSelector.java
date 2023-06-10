@@ -30,6 +30,10 @@ public class ModeSelector extends MouseAdapter{
 	protected BasicObject selectedobj;
 //	protected ArrayList<Objects> objlist;
 	
+	ModeSelector(String type){
+		this.objecttype = type;
+	}
+	
 	public void testprint() {
 		System.out.println("ModeSeletor");
 	}

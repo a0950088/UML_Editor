@@ -12,6 +12,11 @@ public class SelectMode extends ModeSelector{
 	Point endrec = null;
 	boolean isdrag = false;
 	boolean ismoveobj = false;
+	
+	public SelectMode(String type){
+		super(type);
+	}
+	
 	@Override
 	public void testprint() {
 		System.out.println("SelectMode");

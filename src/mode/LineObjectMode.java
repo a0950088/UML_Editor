@@ -13,6 +13,7 @@ import objects.GeneralizationLineObject;
 import objects.CompositionLineObject;
 import objects.AssociationLineObject;
 import objects.LineObject;
+import toolkit.ObjectFactory;
 import objects.BasicObject;
 import controller.ObjectController;
 import java.lang.Math.*;
@@ -25,17 +26,16 @@ public class LineObjectMode extends ModeSelector{
 	BasicObject startobj = null;
 	BasicObject endobj = null;
 	
+	public LineObjectMode(String type){
+		super(type);
+	}
+	
 	@Override
 	public void testprint() {
 		System.out.println("LineObjectMode");
 	}
 	@Override  
-    public void mouseClicked(MouseEvent e) {  
-        // TODO Auto-generated method stub  
-//        System.out.println("LineObjectMode clicked");
-        
-//        super.canvas.repaint();
-    }  
+    public void mouseClicked(MouseEvent e) {}
     @Override  
     public void mousePressed(MouseEvent e) {
 //    	System.out.println("LineObjectMode pressed");
@@ -59,36 +59,11 @@ public class LineObjectMode extends ModeSelector{
         if(startobj!=null && endobj!=null && endobj!=startobj) {
         	endport = endobj.checkPort(e.getPoint());
         	System.out.println("Create Line"); 
-        	if(super.getObjectType() == "ASSOCIATION") {
-            	super.generativeobj = new AssociationLineObject(startport,endport,startobj,endobj);
-            }
-            else if(super.getObjectType() == "GENERALIZATION") {    	
-            	super.generativeobj = new GeneralizationLineObject(startport,endport,startobj,endobj);
-            }
-            else if(super.getObjectType() == "COMPOSITION") {    	
-            	super.generativeobj = new CompositionLineObject(startport,endport,startobj,endobj);
-            }
-//            System.out.println("--------------------------------"); 
+        	super.generativeobj = ObjectFactory.createLineObject(objecttype, startport, endport, startobj, endobj);
             super.setObjectList();
             super.canvas.repaint();
         }
     }  
     @Override
-    public void mouseDragged(MouseEvent e) {
-//    	System.out.println("LineObjectMode mouseDragged");  
-//    	System.out.println(e.getX() + "，" + e.getY());  
-    	
-    }
-  
-//    @Override  
-//    public void mouseEntered(MouseEvent e) {  
-//        // TODO Auto-generated method stub  
-//    	System.out.println("LineObjectMode in canvas"); 
-//    }  
-//  
-//    @Override  
-//    public void mouseExited(MouseEvent e) {  
-//        // TODO Auto-generated method stub  
-//    	System.out.println("LineObjectMode out canvas"); 
-//    } 
+    public void mouseDragged(MouseEvent e) {}
 }

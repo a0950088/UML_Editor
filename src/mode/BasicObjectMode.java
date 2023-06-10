@@ -11,26 +11,31 @@ import javax.swing.JPanel;
 import java.awt.*;  
 import objects.ClassObject;
 import objects.UseCaseObject;
+import toolkit.ObjectFactory;
 import objects.BasicObject;
 
 public class BasicObjectMode extends ModeSelector{
+	
+	public BasicObjectMode(String type){
+		super(type);
+	}
+	
 	@Override
 	public void testprint() {
 		System.out.println("BasicObjectMode");
 	}
 	@Override  
     public void mouseClicked(MouseEvent e) {  
-        // Generate BasicObject
-		// 
-		
+        // Generate BasicObject	
 //        System.out.println("BasicObjectMode clicked");
 		System.out.println("Create Basic Object");
-        if(super.getObjectType() == "CLASS") {
-        	super.generativeobj = new ClassObject(e.getPoint());
-        }
-        else if(super.getObjectType() == "USECASE") {   	
-        	super.generativeobj = new UseCaseObject(e.getPoint());
-        }
+		super.generativeobj = ObjectFactory.createBasicObject(super.objecttype, e.getPoint());
+//		if(super.getObjectType() == "CLASS") {
+//        	super.generativeobj = new ClassObject(e.getPoint());
+//        }
+//        else if(super.getObjectType() == "USECASE") {   	
+//        	super.generativeobj = new UseCaseObject(e.getPoint());
+//        }
 //    	System.out.println("--------------------------------");
         super.setObjectList();
         super.canvas.repaint();
@@ -49,15 +54,4 @@ public class BasicObjectMode extends ModeSelector{
 //        System.out.println("BasicObjectMode released");  
     }  
   
-//    @Override  
-//    public void mouseEntered(MouseEvent e) {  
-//        // TODO Auto-generated method stub  
-//    	System.out.println("BasicObjectMode in canvas"); 
-//    }  
-//  
-//    @Override  
-//    public void mouseExited(MouseEvent e) {  
-//        // TODO Auto-generated method stub  
-//    	System.out.println("BasicObjectMode out canvas"); 
-//    } 
 }
