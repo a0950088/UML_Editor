@@ -13,9 +13,9 @@ import java.util.Comparator;
 import java.util.Collections;
 import java.util.List;
 public class ObjectController {
+	private static ArrayList<Objects> objlist = new ArrayList<Objects>();
 	private static ArrayList<BasicObject> basicobjlist = new ArrayList<BasicObject>();
 	private static ArrayList<LineObject> lineobjlist = new ArrayList<LineObject>();
-	private static ArrayList<Objects> objlist = new ArrayList<Objects>();
 	private static int depth = 0;
 	private static ArrayList<BasicObject> groupobjs = new ArrayList<BasicObject>();
 	public static void setList(Objects obj, String type) {
@@ -45,7 +45,6 @@ public class ObjectController {
 		Rectangle selectedrec = new Rectangle(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y), Math.abs(p1.x - p2.x), Math.abs(p1.y - p2.y));
 		for(BasicObject o:basicobjlist) {
 			if(selectedrec.contains(o.getRange())) {
-//				System.out.println("In multi basicobj");
 				o.setSelectedCondition(true);
 				groupobjs.add(o);
 			}
@@ -63,7 +62,6 @@ public class ObjectController {
 		for(BasicObject o:basicobjlist) {
 			o.setSelectedCondition(false);
 			if(o.getRange().contains(point)) {
-//				System.out.println("In basicobj");
 				lastobj = o;
 			}
 		}
@@ -80,10 +78,8 @@ public class ObjectController {
 			System.out.println("Can't Group!");
 		}
 		else {
-//			System.out.println("Group!");
 			CompositeObject compositeobj = new CompositeObject(groupobjs);
 			for(BasicObject o:groupobjs) {
-//				o.testprint();
 				objlist.remove(o);
 				basicobjlist.remove(o);
 			}
@@ -112,13 +108,6 @@ public class ObjectController {
 		objlist.remove(compositeobj);
 		basicobjlist.remove(compositeobj);
 		compositeobj = null;
-//		for(Objects o:objlist) {
-//			o.testprint();
-//		}
-//		System.out.println("-------------------");
-//		for(BasicObject o:basicobjlist) {
-//			o.testprint();
-//		}
 	}
 	
 	public static ArrayList<LineObject> getLine(){
